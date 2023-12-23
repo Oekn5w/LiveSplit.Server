@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.cbIndicatorServer = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -37,23 +38,22 @@
             this.txtPort = new System.Windows.Forms.TextBox();
             this.cbAutoStart = new System.Windows.Forms.CheckBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.cbIndicatorServer = new System.Windows.Forms.CheckBox();
-            this.label8 = new System.Windows.Forms.Label();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.numberOfConnections = new System.Windows.Forms.NumericUpDown();
+            this.label8 = new System.Windows.Forms.Label();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.label9 = new System.Windows.Forms.Label();
             this.btnColor1 = new System.Windows.Forms.Button();
             this.btnColor2 = new System.Windows.Forms.Button();
             this.btnColor3 = new System.Windows.Forms.Button();
-            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.label10 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numberOfConnections)).BeginInit();
             this.tableLayoutPanel4.SuspendLayout();
-            this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -86,6 +86,17 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(430, 280);
             this.tableLayoutPanel1.TabIndex = 0;
+            // 
+            // cbIndicatorServer
+            // 
+            this.cbIndicatorServer.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.cbIndicatorServer.AutoSize = true;
+            this.cbIndicatorServer.Location = new System.Drawing.Point(98, 111);
+            this.cbIndicatorServer.Name = "cbIndicatorServer";
+            this.cbIndicatorServer.Padding = new System.Windows.Forms.Padding(3);
+            this.cbIndicatorServer.Size = new System.Drawing.Size(21, 19);
+            this.cbIndicatorServer.TabIndex = 8;
+            this.cbIndicatorServer.UseVisualStyleBackColor = true;
             // 
             // label1
             // 
@@ -168,26 +179,26 @@
             this.label6.TabIndex = 7;
             this.label6.Text = "Visual Indication:";
             // 
-            // cbIndicatorServer
+            // tableLayoutPanel2
             // 
-            this.cbIndicatorServer.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.cbIndicatorServer.AutoSize = true;
-            this.cbIndicatorServer.Location = new System.Drawing.Point(98, 111);
-            this.cbIndicatorServer.Name = "cbIndicatorServer";
-            this.cbIndicatorServer.Padding = new System.Windows.Forms.Padding(3);
-            this.cbIndicatorServer.Size = new System.Drawing.Size(21, 19);
-            this.cbIndicatorServer.TabIndex = 8;
-            this.cbIndicatorServer.UseVisualStyleBackColor = true;
-            // 
-            // label8
-            // 
-            this.label8.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(53, 8);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(164, 13);
-            this.label8.TabIndex = 9;
-            this.label8.Text = "Expected number of Connections";
+            this.tableLayoutPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel2.AutoSize = true;
+            this.tableLayoutPanel2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.tableLayoutPanel2.ColumnCount = 2;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel2.Controls.Add(this.numberOfConnections, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.label8, 1, 0);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(95, 133);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 1;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(335, 29);
+            this.tableLayoutPanel2.TabIndex = 13;
             // 
             // numberOfConnections
             // 
@@ -203,6 +214,16 @@
             0,
             0});
             // 
+            // label8
+            // 
+            this.label8.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(53, 8);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(164, 13);
+            this.label8.TabIndex = 9;
+            this.label8.Text = "Expected number of Connections";
+            // 
             // tableLayoutPanel4
             // 
             this.tableLayoutPanel4.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Inset;
@@ -216,8 +237,8 @@
             this.tableLayoutPanel4.Controls.Add(this.label9, 2, 0);
             this.tableLayoutPanel4.Controls.Add(this.label11, 2, 1);
             this.tableLayoutPanel4.Controls.Add(this.label10, 2, 2);
-            this.tableLayoutPanel4.Controls.Add(this.label7, 1, 0);
-            this.tableLayoutPanel4.Controls.Add(this.label12, 1, 1);
+            this.tableLayoutPanel4.Controls.Add(this.label12, 1, 0);
+            this.tableLayoutPanel4.Controls.Add(this.label7, 1, 1);
             this.tableLayoutPanel4.Location = new System.Drawing.Point(95, 162);
             this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
@@ -228,17 +249,6 @@
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel4.Size = new System.Drawing.Size(335, 95);
             this.tableLayoutPanel4.TabIndex = 12;
-            // 
-            // label9
-            // 
-            this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(187, 10);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(143, 13);
-            this.label9.TabIndex = 10;
-            this.label9.Text = "No Connections";
-            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnColor1
             // 
@@ -276,6 +286,28 @@
             this.btnColor3.UseVisualStyleBackColor = false;
             this.btnColor3.Click += new System.EventHandler(this.ColorButtonClick);
             // 
+            // label9
+            // 
+            this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(187, 10);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(143, 13);
+            this.label9.TabIndex = 10;
+            this.label9.Text = "No connections";
+            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label11
+            // 
+            this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(187, 34);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(143, 26);
+            this.label11.TabIndex = 12;
+            this.label11.Text = "Expected number of connections";
+            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // label10
             // 
             this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
@@ -287,43 +319,11 @@
             this.label10.Text = "Clients connected, not expected number";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label11
-            // 
-            this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(187, 34);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(143, 26);
-            this.label11.TabIndex = 12;
-            this.label11.Text = "Expected number of Connections";
-            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // tableLayoutPanel2
-            // 
-            this.tableLayoutPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel2.AutoSize = true;
-            this.tableLayoutPanel2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.tableLayoutPanel2.ColumnCount = 2;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.Controls.Add(this.numberOfConnections, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.label8, 1, 0);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(95, 133);
-            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 1;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(335, 29);
-            this.tableLayoutPanel2.TabIndex = 13;
-            // 
             // label7
             // 
             this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(36, 10);
+            this.label7.Location = new System.Drawing.Point(36, 41);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(143, 13);
             this.label7.TabIndex = 13;
@@ -334,7 +334,7 @@
             // 
             this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(36, 41);
+            this.label12.Location = new System.Drawing.Point(36, 10);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(143, 13);
             this.label12.TabIndex = 14;
@@ -351,11 +351,11 @@
             this.Size = new System.Drawing.Size(444, 294);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
+            this.tableLayoutPanel2.ResumeLayout(false);
+            this.tableLayoutPanel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numberOfConnections)).EndInit();
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel4.PerformLayout();
-            this.tableLayoutPanel2.ResumeLayout(false);
-            this.tableLayoutPanel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
