@@ -1,4 +1,4 @@
-﻿using LiveSplit.Model;
+using LiveSplit.Model;
 using LiveSplit.Options;
 using LiveSplit.TimeFormatters;
 using System;
@@ -410,6 +410,11 @@ namespace LiveSplit.UI.Components
                             State.Run.HasChanged = true;
                         }
 
+                        break;
+                    }
+                    case "":
+                    {
+                        // Check Alive Signal
                         break;
                     }
                     default:
