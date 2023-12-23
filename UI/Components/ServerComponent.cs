@@ -1,4 +1,4 @@
-using LiveSplit.Model;
+﻿using LiveSplit.Model;
 using LiveSplit.Options;
 using LiveSplit.TimeFormatters;
 using System;
@@ -39,6 +39,8 @@ namespace LiveSplit.UI.Components
 
         public IDictionary<string, Action> ContextMenuControls { get; protected set; }
 
+        private bool IsInitialLoad = true;
+
         public ServerComponent(LiveSplitState state)
         {
             Settings = new Settings();
@@ -53,6 +55,9 @@ namespace LiveSplit.UI.Components
 
             State = state;
             Form = state.Form;
+
+            Line = new LineComponent(3, Color.White);
+            Cache = new GraphicsCache();
 
             Model.CurrentState = State;
             State.OnStart += State_OnStart;
@@ -471,21 +476,101 @@ namespace LiveSplit.UI.Components
             }
         }
 
+        protected LineComponent Line { get; set; }
+        public GraphicsCache Cache { get; set; }
+
         public void DrawVertical(Graphics g, LiveSplitState state, float width, Region clipRegion)
         {
+            if (!Settings.EnableVisServer)
+                return;
+            var oldClip = g.Clip;
+            var oldMatrix = g.Transform;
+            var oldMode = g.SmoothingMode;
+            g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.Default;
+            g.Clip = new Region();
+            var scale = g.Transform.Elements.First();
+            var newHeight = Math.Max((int)(3f * scale + 0.5f), 1) / scale;
+            Line.VerticalHeight = newHeight;
+            
+            g.TranslateTransform(0, (3f - newHeight) / 2f);
+            Line.LineColor = GetServerColor();
+            Line.DrawVertical(g, state, width / 2, clipRegion);
+            g.TranslateTransform(width / 2, (3f - newHeight) / 2f);
+            Line.LineColor = GetConnectionColor();
+            Line.DrawVertical(g, state, width / 2, clipRegion);
+
+            g.Clip = oldClip;
+            g.Transform = oldMatrix;
+            g.SmoothingMode = oldMode;
         }
 
         public void DrawHorizontal(Graphics g, LiveSplitState state, float height, Region clipRegion)
         {
+            if (!Settings.EnableVisServer)
+                return;
+            var oldClip = g.Clip;
+            var oldMatrix = g.Transform;
+            var oldMode = g.SmoothingMode;
+            g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.Default;
+            g.Clip = new Region();
+            var scale = g.Transform.Elements.First();
+            var newWidth = Math.Max((int)(3f * scale + 0.5f), 1) / scale;
+            Line.HorizontalWidth = newWidth;
+
+            g.TranslateTransform((3f - newWidth) / 2f, 0);
+            Line.LineColor = GetServerColor();
+            Line.DrawHorizontal(g, state, height/2, clipRegion);
+            g.TranslateTransform((3f - newWidth) / 2f, height / 2);
+            Line.LineColor = GetConnectionColor();
+            Line.DrawHorizontal(g, state, height/2, clipRegion);
+
+            g.Clip = oldClip;
+            g.Transform = oldMatrix;
+            g.SmoothingMode = oldMode;
         }
 
-        public float VerticalHeight => 0;
+        private Color GetServerColor()
+        {
+            if (Server != null && Server.Server.IsBound)
+            {
+                return Settings.ColPositive;
+            }
+            else
+            {
+                return Settings.ColNegative;
+            }
+        }
 
-        public float MinimumWidth => 0;
+        private Color GetConnectionColor()
+        {
+            ushort connected = (ushort)Connections.Count();
+            if (connected == 0)
+            {
+                return Settings.ColNegative;
+            }
+            else if (connected == Settings.ConnectionsExpected)
+            {
+                return Settings.ColPositive;
+            }
+            else
+            {
+                return Settings.ColPartial;
+            }
+        }
 
-        public float HorizontalWidth => 0;
+        public float VerticalHeight
+        {
+            get { return Settings.EnableVisServer ? 3f : 0f; }
+        }
 
-        public float MinimumHeight => 0;
+        public float MinimumWidth => 0f;
+
+        public float HorizontalWidth
+        {
+            get { return Settings.EnableVisServer ? 3f : 0f; }
+        }
+
+        public float MinimumHeight => 0f;
 
         public XmlNode GetSettings(XmlDocument document)
         {
@@ -500,10 +585,23 @@ namespace LiveSplit.UI.Components
         public void SetSettings(XmlNode settings)
         {
             Settings.SetSettings(settings);
+            if (IsInitialLoad && Settings.AutoStart)
+            {
+                Start();
+            }
+            IsInitialLoad = false;
         }
 
         public void Update(IInvalidator invalidator, LiveSplitState state, float width, float height, LayoutMode mode)
         {
+            Cache.Restart();
+
+            Cache["VisualizationEnabled"] = Settings.EnableVisServer;
+            Cache["ColorServer"] = GetServerColor().ToArgb();
+            Cache["ColorConnections"] = GetConnectionColor().ToArgb();
+
+            if (invalidator != null && Cache.HasChanged)
+                invalidator.Invalidate(0, 0, width, height);
         }
 
         public void Dispose()
